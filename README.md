@@ -20,3 +20,6 @@ Everything you enter stays in your own browser on your own device. Nothing is up
 How interest is estimated
 unpaid amount × rate × days late ÷ 365
 Savings interest is calculated on the daily closing balance. The range compares the earliest and the latest day of your usual pay window. It is an illustration, not a bank statement or a legal claim. Change the rate if yours is different.
+
+here is the link :
+https://thinkstudio-krishna.github.io/salary-delay-tracker/
