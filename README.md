@@ -3,6 +3,7 @@ A simple web page that helps employees check the impact of delayed salaries. Ent
 
 Unpaid months and outstanding salary
 Interest foregone if the money had stayed in a savings account (editable rate, default 2.5% p.a. as on IDFC FIRST Bank for balances up to ₹3 lakh)
+
 Broken promises: every dated commitment in the company's emails (salary, PF, laptop, welcome kit), checked against your own credit dates
 Email log: all 16 emails with date, time, sender and the dates each one promised
 
