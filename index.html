@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light"><meta name="robots" content="noindex,nofollow,noarchive">
 <title>Salary Delay Tracker</title>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f3ed;--card:#fffdf9;--ink:#17202b;--muted:#6c7581;--line:#e6e0d6;--red:#9e2638;--red2:#f8e8e8}
@@ -133,7 +133,7 @@ $('et').innerHTML=EM.map(e=>`<tr><td>${e[0]}</td><td class="nw">${fd(e[1])}<br><
 const mx=Math.max(1,...R.rows.map(r=>r.H));$('ch').innerHTML=R.rows.map(r=>`<div class="cw"><div class="cb" style="height:${r.H/mx*100}%"><b>${inr(r.L)}–${inr(r.H)}</b></div></div>`).join('');
 $('cl').innerHTML=R.rows.map(r=>`<div>${esc(r.x.m.split(' ')[0])}<div class="sub">${r.x.p?'paid late':r.st==='Unpaid'?'unpaid':''}</div></div>`).join('');
 $('it').textContent=`${inr(R.lo)}–${inr(R.hi)}`;$('ib').textContent=`Savings-account comparison at ${S.rate}% p.a., as of ${fd(S.asof)}`;
-$('sm').value=`📊 ${S.co} Salary Delay Tracker (as of ${fd(S.asof)})\n✉️ ${EM.length} emails from HR/CEO/management, ${sal} promised a salary date\n❌ Missed deadlines: ${c.failed} of ${N} (salary ${R.bc.Salary[0]}, PF ${R.bc.PF[0]}, laptop ${R.bc.Laptop[0]}, welcome kit ${R.bc['Welcome kit'][0]})\n📅 Salary months unpaid: ${R.un}\n💰 Outstanding salary: enter your own outstanding salary amount\n📉 Interest foregone (${S.rate}% savings): ${inr(R.lo)}–${inr(R.hi)}\n\nCheck yours: enter your own salary and credit dates in the tracker.`;save()}
+$('sm').value=`📊 Salary Delay Tracker (as of ${fd(S.asof)})\n✉️ ${EM.length} emails from HR/CEO/management, ${sal} promised a salary date\n❌ Missed deadlines: ${c.failed} of ${N} (salary ${R.bc.Salary[0]}, PF ${R.bc.PF[0]}, laptop ${R.bc.Laptop[0]}, welcome kit ${R.bc['Welcome kit'][0]})\n📅 Salary months unpaid: ${R.un}\n💰 Outstanding salary: enter your own outstanding salary amount\n📉 Interest foregone (${S.rate}% savings): ${inr(R.lo)}–${inr(R.hi)}\n\nCheck yours: enter your own salary and credit dates in the tracker.`;save()}
 document.addEventListener('change',e=>{const t=e.target.dataset,id=e.target.id;
 if(t.t==='m'){S.months[t.i][t.f]=['a','r'].includes(t.f)?+e.target.value:e.target.value}else if(t.t==='p'){S.pr[t.i][t.f]=e.target.value}
 else if(id==='co')S.co=e.target.value;else if(id==='asof')S.asof=e.target.value||iso(new Date());else if(id==='rate')S.rate=+e.target.value;else if(id==='qs')return;render()});
