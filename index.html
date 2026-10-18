@@ -40,7 +40,7 @@ input,select{font:inherit;font-size:13px;padding:7px 8px;border:1px solid var(--
 <div class="hero"><div class="n" id="hn">0</div><div><div style="font:700 20px Georgia,serif" id="ht"></div><div class="sub" id="hs"></div></div></div>
 <div class="chips" id="cc"></div><div class="bar" id="pb"></div><div class="sub">■ missed &nbsp;<span style="color:#e3b14d">■</span> pending &nbsp;<span style="color:#3c9a5f">■</span> kept</div>
 <div class="tw" style="margin-top:10px"><table><thead><tr><th>Promised by</th><th>Type</th><th>What was promised</th><th>Repeated in</th><th>Mark as</th><th>Result</th></tr></thead><tbody id="pt"></tbody></table></div>
-<div class="note">“Auto”: salary promises compare the date promised with <b>your</b> credit dates above; PF, laptop and welcome-kit promises are missed once the date passes. Change to “Kept” if you received it. The 22 and 27 Oct salary promises are pre-marked missed, and 20 Oct stays pending until that date. The 20 Sep date is counted as missed because the company itself admitted it (email 13), after calling it “final” in emails 4–6.</div></section>
+<div class="note">“Auto”: salary promises compare the date promised with <b>your</b> credit dates above; PF, laptop and welcome-kit promises are missed once the date passes. Change to “Kept” if you received it. The 20, 22 and 27 Oct salary promises stay pending until those dates pass. The 20 Sep date is counted as missed because the company itself admitted it (email 13), after calling it “final” in emails 4–6.</div></section>
 
 <section class="panel"><div class="ph"><h2>Email log</h2><div class="sub">All official emails received, 22 Jul – 18 Oct 2026 (US date format in the source document)</div></div>
 <div class="chips" id="ec"></div><div class="tw"><table><thead><tr><th>#</th><th>Date &amp; time</th><th>From</th><th>What it said</th><th>Dates promised</th><th></th></tr></thead><tbody id="et"></tbody></table></div></section>
@@ -89,8 +89,8 @@ const PR=[
 [7,'Salary','2026-10-10','All pay in 5–10 Oct window (“absolute final”)','jul,aug,sep','auto'],
 [8,'Salary','2026-10-16','Pending July salary','jul','auto'],
 [17,'Salary','2026-10-20','Remaining July salaries by 20 Oct','jul','auto'],
-[9,'Salary','2026-10-22','August salary','aug','failed'],
-[10,'Salary','2026-10-27','September salary','sep','failed'],
+[9,'Salary','2026-10-22','August salary','aug','auto'],
+[10,'Salary','2026-10-27','September salary','sep','auto'],
 [11,'PF','2026-09-30','PF queries resolved “on or before September”','','auto'],
 [12,'PF','2026-10-15','PF details &amp; forms by mid-October','','auto'],
 [13,'Laptop','2026-09-30','Laptop allocation by September','','auto'],
@@ -104,6 +104,7 @@ const seed=()=>({co:'Stackly',rate:2.5,asof:iso(new Date()),pr:{},months:[
 {k:'aug',m:'August 2026',a:0,r:0,f:'2026-09-07',t:'2026-09-15',p:''},
 {k:'sep',m:'September 2026',a:0,r:0,f:'2026-10-07',t:'2026-10-15',p:''}]});
 let S;try{S=JSON.parse(localStorage.getItem('sdt2'))}catch(e){}S=S||seed();S.pr=S.pr||{};
+if((S.v||0)<2){[9,10].forEach(i=>{if(S.pr[i]&&S.pr[i].k==='failed')S.pr[i].k='auto'});S.v=2}
 PR.forEach(p=>{S.pr[p[0]]=S.pr[p[0]]||{d:p[2],k:p[5]}});
 const save=()=>{try{localStorage.setItem('sdt2',JSON.stringify(S))}catch(e){}};
 function pst(p){const o=S.pr[p[0]];if(o.k!=='auto')return o.k;
