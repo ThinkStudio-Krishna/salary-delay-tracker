@@ -40,7 +40,7 @@ input,select{font:inherit;font-size:13px;padding:7px 8px;border:1px solid var(--
 <div class="hero"><div class="n" id="hn">0</div><div><div style="font:700 20px Georgia,serif" id="ht"></div><div class="sub" id="hs"></div></div></div>
 <div class="chips" id="cc"></div><div class="bar" id="pb"></div><div class="sub">■ missed &nbsp;<span style="color:#e3b14d">■</span> pending &nbsp;<span style="color:#3c9a5f">■</span> kept &nbsp;<span style="color:#7c97c0">■</span> replaced</div>
 <div class="tw" style="margin-top:10px"><table><thead><tr><th>Promised by</th><th>Type</th><th>What was promised</th><th>Repeated in</th><th>Mark as</th><th>Result</th></tr></thead><tbody id="pt"></tbody></table></div>
-<div class="note">“Auto”: salary promises compare the date promised with <b>your</b> credit dates above; PF, laptop and welcome-kit promises are missed once the date passes. Change to “Kept” if you received it. The 22 and 27 Oct promises show as Replaced because a Teams message on 22 Oct moved them to 30 Oct and “before Diwali”; the 30 Oct and 8 Nov dates stay pending until they pass. The 20 Sep date is counted as missed because the company itself admitted it (email 13), after calling it “final” in emails 4–6.</div></section>
+<div class="note">“Auto”: salary promises compare the date promised with <b>your</b> credit dates above; PF, laptop and welcome-kit promises are missed once the date passes. Change to “Kept” if you received it. The 22 and 27 Oct promises show as Replaced because a Teams message on 22 Oct moved them to 30 Oct and “before Diwali”; the 30 Oct, 7 Nov and 8 Nov dates stay pending until they pass. The 20 Sep date is counted as missed because the company itself admitted it (email 13), after calling it “final” in emails 4–6.</div></section>
 
 <section class="panel"><div class="ph"><h2>Email &amp; message log</h2><div class="sub">All official emails received from 22 Jul 2026 (US date format in the source), plus the latest Teams reply</div></div>
 <div class="chips" id="ec"></div><div class="tw"><table><thead><tr><th>#</th><th>Date &amp; time</th><th>From</th><th>What it said</th><th>Dates promised</th><th></th></tr></thead><tbody id="et"></tbody></table></div></section>
@@ -80,7 +80,8 @@ const EM=[
 [17,'2026-10-18','—','Divya Asthana · CHRO','Apologises for being unreachable (travelling to Dubai); says the company is not shutting down. Remaining July salaries by 20 Oct; August and September “as per the previously communicated timelines”.',[17,9,10],0],
 [18,'2026-10-21','5:00 pm','Nohini Kiranmai','Discussed the salary timeline in a Teams call. She followed up in the group chat on 22 Oct (entry 20).',[],0,'Teams call'],
 [19,'2026-10-21','6:00 pm','Hardhika S · POC','Said in the Teams call that July and August salaries will be cleared by Fri 30 Oct 2026, and September and October salaries before Diwali. Agreed to act as the group’s POC.',[18,19,20],0,'Teams call'],
-[20,'2026-10-22','2:58 pm','Nohini Kiranmai','Group chat follow-up after the 21 Oct Teams call: two months’ salary “on or before 30th Oct” and September “before Diwali” (no fixed date). Replaces the 22 and 27 Oct dates.',[18,19],0,'Teams']];
+[20,'2026-10-22','2:58 pm','Nohini Kiranmai','Group chat follow-up after the 21 Oct Teams call: two months’ salary “on or before 30th Oct” and September “before Diwali” (no fixed date). Replaces the 22 and 27 Oct dates.',[18,19],0,'Teams'],
+[21,'2026-10-22','7:08 pm','Stackly · Management (company-wide email)','Admits earlier payment commitments were not fulfilled; says salaries were released to some employees. Timeline: July and August by 30 Oct, September in the first week of November; “every possible effort” to clear all before Diwali. HR contacts sent in an Excel sheet. Asks staff not to act “out of frustration”.',[18,21],0]];
 // [id,type,due,label,linked months,default mark]
 const PR=[
 [1,'Salary','2026-08-25','July salary, 20th–25th schedule','jul','auto'],
@@ -94,9 +95,10 @@ const PR=[
 [17,'Salary','2026-10-20','Remaining July salaries by 20 Oct','jul','auto'],
 [9,'Salary','2026-10-22','August salary','aug','revised'],
 [10,'Salary','2026-10-27','September salary','sep','revised'],
-[18,'Salary','2026-10-30','July &amp; August salary on or before 30 Oct (Teams, 21–22 Oct)','jul,aug','auto'],
+[18,'Salary','2026-10-30','July &amp; August salary on or before 30 Oct (Teams 21–22 Oct and email 22 Oct)','jul,aug','auto'],
 [19,'Salary','2026-11-08','September salary “before Diwali” (no fixed date; Diwali is 8 Nov)','sep','auto'],
 [20,'Salary','2026-11-08','October salary “before Diwali” (no fixed date; Diwali is 8 Nov)','','auto'],
+[21,'Salary','2026-11-07','September salary in the first week of November (by 7 Nov)','sep','auto'],
 [11,'PF','2026-09-30','PF queries resolved “on or before September”','','auto'],
 [12,'PF','2026-10-15','PF details &amp; forms by mid-October','','auto'],
 [13,'Laptop','2026-09-30','Laptop allocation by September','','auto'],
