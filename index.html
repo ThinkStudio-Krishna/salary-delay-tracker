@@ -30,24 +30,24 @@ input,select{font:inherit;font-size:13px;padding:7px 8px;border:1px solid var(--
 <div class="set"><label>Company<input id="co" size="12"></label><label>As of<input type="date" id="asof"></label><label>Savings rate % p.a.<input type="number" step="0.01" id="rate" style="width:90px"></label></div></div>
 <div class="metrics" id="mt"></div>
 
-<section class="panel me"><div class="ph"><h2>Your salary &amp; outstanding — edit to check yours</h2><div class="sub">Enter your net monthly salary, the window you are normally paid in, and the date it was actually credited (leave empty if unpaid). Part-paid? Enter what you received.</div></div>
+<section class="panel me"><div class="ph"><h2>Your salary &amp; outstanding — edit to check yours</h2><div class="sub">Enter your net monthly salary, the date it was due, and the date it was actually credited (leave empty if unpaid). Part-paid? Enter what you received.</div></div>
 <div class="acts" style="margin:0 0 10px"><label class="sub">Monthly net salary ₹<br><input type="number" id="qs" placeholder="e.g. 30000" style="width:130px"></label><button class="btn p" onclick="qa()">Apply to all months</button><button class="btn" onclick="addM()">+ Add salary month</button></div>
-<div class="tw"><table><thead><tr><th>Salary month</th><th>Net amount ₹</th><th>Part-paid ₹</th><th>Expected from</th><th>Expected till</th><th>Credited on</th><th>Status</th><th>Days late</th><th></th></tr></thead><tbody id="lt"></tbody></table></div>
+<div class="tw"><table><thead><tr><th>Salary month</th><th>Net amount ₹</th><th>Part-paid ₹</th><th>Due date</th><th>Credited on</th><th>Status</th><th>Days late</th><th></th></tr></thead><tbody id="lt"></tbody></table></div>
 <div class="tot"><span id="lt1"></span><span id="lt2"></span></div>
-<div class="note">“Expected from/till” is your usual pay window (not a contract date). Promise results below update from your “Credited on” dates.</div></section>
+<div class="note">“Due date” is when your salary should have been credited. It starts as the 7th of the following month (the Code on Wages deadline for monthly wages); change it to your usual pay date. Promise results below update from your “Credited on” dates.</div></section>
 
 <section class="panel hl"><div class="ph"><h2>Broken promises</h2><div class="sub">Every deadline the company gave in its emails, from salary to PF, laptops and welcome kits</div></div>
 <div class="hero"><div class="n" id="hn">0</div><div><div style="font:700 20px Georgia,serif" id="ht"></div><div class="sub" id="hs"></div></div></div>
-<div class="chips" id="cc"></div><div class="bar" id="pb"></div><div class="sub">■ missed &nbsp;<span style="color:#e3b14d">■</span> pending &nbsp;<span style="color:#3c9a5f">■</span> kept</div>
+<div class="chips" id="cc"></div><div class="bar" id="pb"></div><div class="sub">■ missed &nbsp;<span style="color:#e3b14d">■</span> pending &nbsp;<span style="color:#3c9a5f">■</span> kept &nbsp;<span style="color:#7c97c0">■</span> replaced</div>
 <div class="tw" style="margin-top:10px"><table><thead><tr><th>Promised by</th><th>Type</th><th>What was promised</th><th>Repeated in</th><th>Mark as</th><th>Result</th></tr></thead><tbody id="pt"></tbody></table></div>
-<div class="note">“Auto”: salary promises compare the date promised with <b>your</b> credit dates above; PF, laptop and welcome-kit promises are missed once the date passes. Change to “Kept” if you received it. The 20, 22 and 27 Oct salary promises stay pending until those dates pass. The 20 Sep date is counted as missed because the company itself admitted it (email 13), after calling it “final” in emails 4–6.</div></section>
+<div class="note">“Auto”: salary promises compare the date promised with <b>your</b> credit dates above; PF, laptop and welcome-kit promises are missed once the date passes. Change to “Kept” if you received it. The 22 and 27 Oct promises show as Replaced because a Teams message on 22 Oct moved them to 30 Oct and “before Diwali”; the 30 Oct and 8 Nov dates stay pending until they pass. The 20 Sep date is counted as missed because the company itself admitted it (email 13), after calling it “final” in emails 4–6.</div></section>
 
-<section class="panel"><div class="ph"><h2>Email log</h2><div class="sub">All official emails received, 22 Jul – 18 Oct 2026 (US date format in the source document)</div></div>
+<section class="panel"><div class="ph"><h2>Email &amp; message log</h2><div class="sub">All official emails received from 22 Jul 2026 (US date format in the source), plus the latest Teams reply</div></div>
 <div class="chips" id="ec"></div><div class="tw"><table><thead><tr><th>#</th><th>Date &amp; time</th><th>From</th><th>What it said</th><th>Dates promised</th><th></th></tr></thead><tbody id="et"></tbody></table></div></section>
 
 <div class="two"><section class="panel"><div class="ph"><h2>Interest foregone</h2><div class="sub" id="ib"></div></div>
 <div class="chart" id="ch"></div><div class="cl" id="cl"></div><div class="tot" style="background:#faeded"><span>Total estimated interest</span><span class="red" id="it"></span></div>
-<div class="note">Estimate = unpaid amount × rate × days late ÷ 365 (daily closing balance). Range = earliest vs. latest day of your expected window. Not a bank statement or legal claim.</div></section>
+<div class="note">Estimate = unpaid amount × rate × days late ÷ 365 (daily closing balance). Days are counted from the due date to the credit date, or to today if unpaid. Not a bank statement or legal claim.</div></section>
 <section class="panel"><h2>Share</h2><div class="sub" style="margin:4px 0 10px">Send this summary to your WhatsApp group.</div>
 <textarea id="sm" rows="9" readonly style="width:100%;font:12px/1.5 inherit;border:1px solid var(--line);border-radius:8px;padding:8px"></textarea>
 <div class="acts"><button class="btn p" onclick="wa()">Share on WhatsApp</button><button class="btn" onclick="cp()">Copy text</button><button class="btn" onclick="window.print()">Print / PDF</button><button class="btn" onclick="fresh()">Start blank</button></div>
@@ -77,7 +77,10 @@ const EM=[
 [14,'2026-09-18','6:27 pm','Nishanth Dhanasekaran · CEO','“Without fail” 5–10 Oct; “no further extension or postponement beyond 10 Oct”.',[7],1],
 [15,'2026-09-19','6:50 pm','Nishanth Dhanasekaran · CEO','Warns against rumours and social-media posts; disciplinary action possible. No pay date.',[],0],
 [16,'2026-10-10','6:03 pm','Office of the CEO &amp; Management','Admits 10 Oct was missed; says ~60% of staff got July pay. New dates: July 16 Oct, August 22 Oct, September 27 Oct.',[8,9,10],0],
-[17,'2026-10-18','—','Divya Asthana · CHRO','Apologises for being unreachable (travelling to Dubai); says the company is not shutting down. Remaining July salaries by 20 Oct; August and September “as per the previously communicated timelines”.',[17,9,10],0]];
+[17,'2026-10-18','—','Divya Asthana · CHRO','Apologises for being unreachable (travelling to Dubai); says the company is not shutting down. Remaining July salaries by 20 Oct; August and September “as per the previously communicated timelines”.',[17,9,10],0],
+[18,'2026-10-21','5:00 pm','Nohini Kiranmai','Discussed the salary timeline in a Teams call. She followed up in the group chat on 22 Oct (entry 20).',[],0,'Teams call'],
+[19,'2026-10-21','6:00 pm','Hardhika S · POC','Said in the Teams call that July and August salaries will be cleared by Fri 30 Oct 2026, and September and October salaries before Diwali. Agreed to act as the group’s POC.',[18,19,20],0,'Teams call'],
+[20,'2026-10-22','2:58 pm','Nohini Kiranmai','Group chat follow-up after the 21 Oct Teams call: two months’ salary “on or before 30th Oct” and September “before Diwali” (no fixed date). Replaces the 22 and 27 Oct dates.',[18,19],0,'Teams']];
 // [id,type,due,label,linked months,default mark]
 const PR=[
 [1,'Salary','2026-08-25','July salary, 20th–25th schedule','jul','auto'],
@@ -89,8 +92,11 @@ const PR=[
 [7,'Salary','2026-10-10','All pay in 5–10 Oct window (“absolute final”)','jul,aug,sep','auto'],
 [8,'Salary','2026-10-16','Pending July salary','jul','auto'],
 [17,'Salary','2026-10-20','Remaining July salaries by 20 Oct','jul','auto'],
-[9,'Salary','2026-10-22','August salary','aug','auto'],
-[10,'Salary','2026-10-27','September salary','sep','auto'],
+[9,'Salary','2026-10-22','August salary','aug','revised'],
+[10,'Salary','2026-10-27','September salary','sep','revised'],
+[18,'Salary','2026-10-30','July &amp; August salary on or before 30 Oct (Teams, 21–22 Oct)','jul,aug','auto'],
+[19,'Salary','2026-11-08','September salary “before Diwali” (no fixed date; Diwali is 8 Nov)','sep','auto'],
+[20,'Salary','2026-11-08','October salary “before Diwali” (no fixed date; Diwali is 8 Nov)','','auto'],
 [11,'PF','2026-09-30','PF queries resolved “on or before September”','','auto'],
 [12,'PF','2026-10-15','PF details &amp; forms by mid-October','','auto'],
 [13,'Laptop','2026-09-30','Laptop allocation by September','','auto'],
@@ -98,46 +104,47 @@ const PR=[
 [15,'Welcome kit','2026-09-30','Welcome kit by September','','auto'],
 [16,'Welcome kit','2026-10-15','Welcome kits by mid-October','','auto']];
 const T=i=>PR.find(p=>p[0]===i)[1];
+const isE=e=>!e[7];
 const CATS=['Salary','PF','Laptop','Welcome kit'];
 const seed=()=>({co:'Stackly',rate:2.5,asof:iso(new Date()),pr:{},months:[
 {k:'jul',m:'July 2026',a:0,r:0,f:'2026-08-07',t:'2026-08-15',p:''},
 {k:'aug',m:'August 2026',a:0,r:0,f:'2026-09-07',t:'2026-09-15',p:''},
 {k:'sep',m:'September 2026',a:0,r:0,f:'2026-10-07',t:'2026-10-15',p:''}]});
-let S;try{S=JSON.parse(localStorage.getItem('sdt2'))}catch(e){}S=S||seed();S.pr=S.pr||{};
-if((S.v||0)<2){[9,10].forEach(i=>{if(S.pr[i]&&S.pr[i].k==='failed')S.pr[i].k='auto'});S.v=2}
+let S;try{S=JSON.parse(localStorage.getItem('sdt2'))}catch(e){}S=S||seed();S.pr=S.pr||{};S.asof=iso(new Date());
+if((S.v||0)<3){[9,10].forEach(i=>{if(S.pr[i]&&S.pr[i].k!=='kept')S.pr[i].k='revised'});S.v=3}
 PR.forEach(p=>{S.pr[p[0]]=S.pr[p[0]]||{d:p[2],k:p[5]}});
 const save=()=>{try{localStorage.setItem('sdt2',JSON.stringify(S))}catch(e){}};
 function pst(p){const o=S.pr[p[0]];if(o.k!=='auto')return o.k;
 if(p[4]){const rs=p[4].split(',').map(k=>S.months.find(x=>x.k===k)).filter(Boolean);if(rs.length&&rs.every(x=>x.p&&df(x.p,o.d)>=0))return'kept'}
 return df(o.d,S.asof)>0?'failed':'pending'}
 function calc(){const r=+S.rate||0;let out=0,un=0,lo=0,hi=0;
-const rows=S.months.map(x=>{const a=+x.a||0,end=x.p||S.asof;let st=x.p?(df(x.t,x.p)>0?'Paid late':'On time'):(df(x.f,S.asof)>=0?'Unpaid':'Not due yet');
-const base=x.p?a:Math.max(0,a-(+x.r||0)),dl=Math.max(0,df(x.t,end)),dh=Math.max(0,df(x.f,end)),L=base*r/100*dl/365,H=base*r/100*dh/365;
-if(st==='Unpaid'){out+=base;un++}lo+=L;hi+=H;return{x,st,dl,L,H}});
-const c={failed:0,pending:0,kept:0},bc={};CATS.forEach(k=>bc[k]=[0,0]);
+const rows=S.months.map(x=>{const a=+x.a||0,end=x.p||S.asof;let st=x.p?(df(x.f,x.p)>0?'Paid late':'On time'):(df(x.f,S.asof)>=0?'Unpaid':'Not due yet');
+const base=x.p?a:Math.max(0,a-(+x.r||0)),dl=Math.max(0,df(x.f,end)),dh=dl,L=base*r/100*dl/365,H=L;
+if(st==='Unpaid'){out+=base;un++}lo+=L;hi+=H;return{x,st,dl,dh,L,H}});
+const c={failed:0,pending:0,kept:0,revised:0},bc={};CATS.forEach(k=>bc[k]=[0,0]);
 PR.forEach(p=>{const s=pst(p);c[s]++;bc[p[1]][1]++;if(s==='failed')bc[p[1]][0]++});return{rows,out,un,lo,hi,c,bc}}
-function render(){const R=calc(),c=R.c,N=PR.length,sal=EM.filter(e=>e[5].some(i=>T(i)==='Salary')).length,fin=EM.filter(e=>e[6]).length,
-kit=EM.filter(e=>e[5].some(i=>T(i)!=='Salary')).length;
+function render(){const R=calc(),c=R.c,N=PR.length,NE=EM.filter(isE).length,tm=EM.filter(e=>!isE(e)&&e[5].length).length,sal=EM.filter(e=>isE(e)&&e[5].some(i=>T(i)==='Salary')).length,fin=EM.filter(e=>e[6]).length,
+kit=EM.filter(e=>isE(e)&&e[5].some(i=>T(i)!=='Salary')).length;
 $('co').value=S.co;$('asof').value=S.asof;$('rate').value=S.rate;
-$('mt').innerHTML=`<div class="metric" style="background:var(--red2)"><b>Broken promises</b><div class="big red">${c.failed}</div><div class="sub">of ${N} promised deadlines · ${sal} of ${EM.length} emails named a pay date</div></div>
+$('mt').innerHTML=`<div class="metric" style="background:var(--red2)"><b>Broken promises</b><div class="big red">${c.failed}</div><div class="sub">of ${N} promised deadlines · ${sal} of ${NE} emails named a pay date</div></div>
 <div class="metric"><b>Salary months unpaid</b><div class="big">${R.un}</div><div class="sub">${R.rows.filter(r=>r.st==='Unpaid').map(r=>esc(r.x.m)).join(' · ')||'None'}</div></div>
 <div class="metric"><b>Outstanding salary</b><div class="big">${inr(R.out)}</div><div class="sub">net, ${R.un} month(s)</div></div>
-<div class="metric"><b>Interest foregone</b><div class="big" style="color:#52348a">${inr(R.lo)}–${inr(R.hi)}</div><div class="sub">at ${S.rate}% p.a. savings rate</div></div>`;
+<div class="metric"><b>Interest foregone</b><div class="big" style="color:#52348a">${inr(R.lo)}</div><div class="sub">at ${S.rate}% p.a. savings rate</div></div>`;
 $('lt').innerHTML=R.rows.map((r,i)=>{const x=r.x,cl=r.st==='Unpaid'?'bad':r.st==='Paid late'?'warn':r.st==='On time'?'ok':'rev',I=f=>`data-t="m" data-i="${i}" data-f="${f}"`;
-return`<tr><td><input ${I('m')} value="${esc(x.m)}" size="13"></td><td><input type="number" ${I('a')} value="${x.a||''}" placeholder="amount" style="width:90px"></td><td><input type="number" ${I('r')} value="${x.r||''}" style="width:80px" placeholder="0"></td><td><input type="date" ${I('f')} value="${x.f}"></td><td><input type="date" ${I('t')} value="${x.t}"></td><td><input type="date" ${I('p')} value="${x.p}"></td><td><span class="pill ${cl}">${r.st}</span></td><td>${r.dl||'—'}</td><td><button class="x" onclick="del(${i})">×</button></td></tr>`}).join('');
+return`<tr><td><input ${I('m')} value="${esc(x.m)}" size="13"></td><td><input type="number" ${I('a')} value="${x.a||''}" placeholder="amount" style="width:90px"></td><td><input type="number" ${I('r')} value="${x.r||''}" style="width:80px" placeholder="0"></td><td><input type="date" ${I('f')} value="${x.f}"></td><td><input type="date" ${I('p')} value="${x.p}"></td><td><span class="pill ${cl}">${r.st}</span></td><td>${r.dl||'—'}</td><td><button class="x" onclick="del(${i})">×</button></td></tr>`}).join('');
 $('lt1').textContent=`Total outstanding · ${R.un} month(s)`;$('lt2').textContent=inr(R.out);
-$('hn').textContent=c.failed;$('ht').textContent=`${c.failed} of ${N} promised deadlines missed`;$('hs').textContent=`${c.pending} pending · ${c.kept} kept`;
+$('hn').textContent=c.failed;$('ht').textContent=`${c.failed} of ${N} promised deadlines missed`;$('hs').textContent=`${c.pending} pending · ${c.kept} kept · ${c.revised} replaced by a later date`;
 $('cc').innerHTML=CATS.map(k=>`<div class="chip"><b class="red">${R.bc[k][0]}/${R.bc[k][1]}</b><span>${k} deadlines missed</span></div>`).join('');
-$('pb').innerHTML=`<i style="width:${c.failed/N*100}%;background:#9e2638"></i><i style="width:${c.pending/N*100}%;background:#e3b14d"></i><i style="width:${c.kept/N*100}%;background:#3c9a5f"></i>`;
-const pill={failed:['bad','Missed'],pending:['warn','Pending'],kept:['ok','Kept']};
+$('pb').innerHTML=`<i style="width:${c.failed/N*100}%;background:#9e2638"></i><i style="width:${c.pending/N*100}%;background:#e3b14d"></i><i style="width:${c.kept/N*100}%;background:#3c9a5f"></i><i style="width:${c.revised/N*100}%;background:#7c97c0"></i>`;
+const pill={failed:['bad','Missed'],pending:['warn','Pending'],kept:['ok','Kept'],revised:['rev','Replaced']};
 $('pt').innerHTML=PR.map(p=>{const o=S.pr[p[0]],s=pst(p),f=o.k==='failed'&&df(o.d,S.asof)<=0,n=EM.filter(e=>e[5].includes(p[0])).map(e=>e[0]);
-return`<tr><td class="nw"><input type="date" data-t="p" data-i="${p[0]}" data-f="d" value="${o.d}"></td><td><span class="pill ${p[1]==='Salary'?'bad':'pur'}">${p[1]}</span></td><td>${p[3]}</td><td class="sub">${n.length} email${n.length==1?'':'s'}<br>#${n.join(', #')}</td><td><select data-t="p" data-i="${p[0]}" data-f="k">${[['auto','Auto'],['failed','Missed'],['kept','Kept']].map(v=>`<option value="${v[0]}"${o.k===v[0]?' selected':''}>${v[1]}</option>`).join('')}</select></td><td class="nw"><span class="pill ${pill[s][0]}">${pill[s][1]}${f?' (marked)':''}</span></td></tr>`}).join('');
-$('ec').innerHTML=`<div class="chip"><b>${EM.length}</b><span>emails received</span></div><div class="chip"><b class="red">${sal}</b><span>promised a salary date</span></div><div class="chip"><b class="red">${kit}</b><span>promised PF / laptop / kit</span></div><div class="chip"><b class="red">${fin}</b><span>called a date “final”</span></div><div class="chip"><b>${EM.length-sal}</b><span>gave no salary date</span></div>`;
-$('et').innerHTML=EM.map(e=>`<tr><td>${e[0]}</td><td class="nw">${fd(e[1])}<br><span class="sub">${e[2]}</span></td><td>${e[3]}</td><td>${e[4]}</td><td>${e[5].map(i=>{const p=PR.find(q=>q[0]===i);return`<span class="pill ${p[1]==='Salary'?'bad':'pur'} dt">${p[1]==='Salary'?'':p[1]+' '}${sd(p[2])}</span>`}).join('')||'<span class="sub">none</span>'}</td><td>${e[6]?'<span class="pill warn">“Final”</span>':''}</td></tr>`).join('');
-const mx=Math.max(1,...R.rows.map(r=>r.H));$('ch').innerHTML=R.rows.map(r=>`<div class="cw"><div class="cb" style="height:${r.H/mx*100}%"><b>${inr(r.L)}–${inr(r.H)}</b></div></div>`).join('');
+return`<tr><td class="nw"><input type="date" data-t="p" data-i="${p[0]}" data-f="d" value="${o.d}"></td><td><span class="pill ${p[1]==='Salary'?'bad':'pur'}">${p[1]}</span></td><td>${p[3]}</td><td class="sub">${n.length} source${n.length==1?'':'s'}<br>#${n.join(', #')}</td><td><select data-t="p" data-i="${p[0]}" data-f="k">${[['auto','Auto'],['failed','Missed'],['kept','Kept'],['revised','Replaced']].map(v=>`<option value="${v[0]}"${o.k===v[0]?' selected':''}>${v[1]}</option>`).join('')}</select></td><td class="nw"><span class="pill ${pill[s][0]}">${pill[s][1]}${f?' (marked)':''}</span></td></tr>`}).join('');
+$('ec').innerHTML=`<div class="chip"><b>${NE}</b><span>emails received</span></div><div class="chip"><b class="red">${sal}</b><span>promised a salary date</span></div><div class="chip"><b class="red">${kit}</b><span>promised PF / laptop / kit</span></div><div class="chip"><b class="red">${fin}</b><span>called a date “final”</span></div><div class="chip"><b>${NE-sal}</b><span>gave no salary date</span></div><div class="chip"><b class="red">${tm}</b><span>Teams entries with new dates</span></div>`;
+$('et').innerHTML=EM.map(e=>`<tr><td>${e[0]}</td><td class="nw">${fd(e[1])}<br><span class="sub">${e[2]}</span></td><td>${e[3]}${isE(e)?'':' <span class="pill rev">'+e[7]+'</span>'}</td><td>${e[4]}</td><td>${e[5].map(i=>{const p=PR.find(q=>q[0]===i);return`<span class="pill ${p[1]==='Salary'?'bad':'pur'} dt">${p[1]==='Salary'?'':p[1]+' '}${sd(p[2])}</span>`}).join('')||'<span class="sub">none</span>'}</td><td>${e[6]?'<span class="pill warn">“Final”</span>':''}</td></tr>`).join('');
+const mx=Math.max(1,...R.rows.map(r=>r.H));$('ch').innerHTML=R.rows.map(r=>`<div class="cw"><div class="cb" style="height:${r.H/mx*100}%"><b>${inr(r.L)}</b></div></div>`).join('');
 $('cl').innerHTML=R.rows.map(r=>`<div>${esc(r.x.m.split(' ')[0])}<div class="sub">${r.x.p?'paid late':r.st==='Unpaid'?'unpaid':''}</div></div>`).join('');
-$('it').textContent=`${inr(R.lo)}–${inr(R.hi)}`;$('ib').textContent=`Savings-account comparison at ${S.rate}% p.a., as of ${fd(S.asof)}`;
-$('sm').value=`📊 Salary Delay Tracker (as of ${fd(S.asof)})\n✉️ ${EM.length} emails from HR/CEO/management, ${sal} promised a salary date\n❌ Missed deadlines: ${c.failed} of ${N} (salary ${R.bc.Salary[0]}, PF ${R.bc.PF[0]}, laptop ${R.bc.Laptop[0]}, welcome kit ${R.bc['Welcome kit'][0]})\n📅 Salary months unpaid: ${R.un}\n💰 Outstanding salary: enter your own outstanding salary amount\n📉 Interest foregone (${S.rate}% savings): ${inr(R.lo)}–${inr(R.hi)}\n\nCheck yours: enter your own salary and credit dates in the tracker.`;save()}
+$('it').textContent=`${inr(R.lo)}`;$('ib').textContent=`Savings-account comparison at ${S.rate}% p.a., as of ${fd(S.asof)}`;
+$('sm').value=`📊 Salary Delay Tracker (as of ${fd(S.asof)})\n✉️ ${NE} emails from HR/CEO/management, ${sal} promised a salary date\n❌ Missed deadlines: ${c.failed} of ${N} (salary ${R.bc.Salary[0]}, PF ${R.bc.PF[0]}, laptop ${R.bc.Laptop[0]}, welcome kit ${R.bc['Welcome kit'][0]}) · ${c.pending} pending · ${c.revised} replaced by later dates\n📅 Salary months unpaid: ${R.un}\n💰 Outstanding salary: enter your own outstanding salary amount\n📉 Interest foregone (${S.rate}% savings): ${inr(R.lo)}\n\nCheck yours: enter your own salary and credit dates in the tracker.`;save()}
 document.addEventListener('change',e=>{const t=e.target.dataset,id=e.target.id;
 if(t.t==='m'){S.months[t.i][t.f]=['a','r'].includes(t.f)?+e.target.value:e.target.value}else if(t.t==='p'){S.pr[t.i][t.f]=e.target.value}
 else if(id==='co')S.co=e.target.value;else if(id==='asof')S.asof=e.target.value||iso(new Date());else if(id==='rate')S.rate=+e.target.value;else if(id==='qs')return;render()});
