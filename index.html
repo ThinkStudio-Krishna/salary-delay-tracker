@@ -63,29 +63,31 @@ inr=n=>'₹'+Math.round(n).toLocaleString('en-IN'),fd=s=>s?D(s).toLocaleDateStri
 sd=s=>D(s).toLocaleDateString('en-GB',{day:'numeric',month:'short'}),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 // [no,date,time,from,summary,promiseIds,final]
 const EM=[
-[1,'2026-07-22','8:57 pm','Yaminee D · CPO','Salary on the 20th–25th for the next two months; September salary by 7 Oct. Laptops, PF, welcome kits, ID cards to be resolved “on or before September”.',[1,5,6,11,13,15],0],
-[2,'2026-08-12','—','Yaminee D · CPO','Repeats the 20th–25th and 7 Oct schedule; asks staff to stop calling.',[1,5,6],0],
-[3,'2026-08-25','—','Yaminee D · HR / Accounts / Management','Admits the salary delay (client abroad). Pay by 31 Aug, “no later than 4 Sep”.',[2,3],0],
-[4,'2026-08-25','1:17 pm','Nishanth Dhanasekaran · CEO','Pending July and August salaries by 20 Sep; September salary on 7 Oct.',[4,6],0],
-[5,'2026-08-25','2:21 pm','Nishanth Dhanasekaran · CEO','Calls 20 Sep and 7 Oct “final… no further changes or extensions”.',[4,6],1],
-[6,'2026-08-25','3:23 pm','Nishanth Dhanasekaran · CEO','All pending salaries by 20 Sep; warns staff over tone towards HR.',[4],0],
-[7,'2026-08-27','1:07 pm','Divya Asthana · HR Manager','ID cards, welcome kits, laptop bags, laptops, PF details and forms by mid-October; salaries by 20 Sep.',[4,12,14,16],0],
-[8,'2026-09-10','1:43 pm','Yaminee D · CPO','Rumour warning; says salary will be paid “as per the dates committed”. No new date.',[],0],
-[9,'2026-09-10','2:03 pm','Divya Asthana · CHRO','Pending two months’ salary by the 20th, then the 7th monthly; laptops, insurance, ID cards, welcome kits by mid-October; advances stopped.',[4,6,14,16],0],
-[10,'2026-09-17','7:26 pm','Divya Asthana · CHRO (signed Management Team)','“FINAL COMMITMENT”: July–September payroll 5–10 Oct; 10 Oct “absolute final date”.',[7],1],
-[11,'2026-09-17','8:19 pm','Divya Asthana · CHRO','Blames audit and a PreyFox account restriction. No new date.',[],0],
-[12,'2026-09-17','8:43 pm','Nishanth Dhanasekaran · CEO','All pending salaries cleared 5–10 Oct; asks for “one final period” of patience.',[7],0],
-[13,'2026-09-18','12:26 am','Nishanth Dhanasekaran · CEO','Admits 20 Sep was not met; repeats the 5–10 Oct window.',[7],0],
-[14,'2026-09-18','6:27 pm','Nishanth Dhanasekaran · CEO','“Without fail” 5–10 Oct; “no further extension or postponement beyond 10 Oct”.',[7],1],
-[15,'2026-09-19','6:50 pm','Nishanth Dhanasekaran · CEO','Warns against rumours and social-media posts; disciplinary action possible. No pay date.',[],0],
+[1,'2026-07-22','8:57 pm','CPO','Salary on the 20th–25th for the next two months; September salary by 7 Oct. Laptops, PF, welcome kits, ID cards to be resolved “on or before September”.',[1,5,6,11,13,15],0],
+[2,'2026-08-12','—','CPO','Repeats the 20th–25th and 7 Oct schedule; asks staff to stop calling.',[1,5,6],0],
+[3,'2026-08-25','—','HR / Accounts / Management','Admits the salary delay (client abroad). Pay by 31 Aug, “no later than 4 Sep”.',[2,3],0],
+[4,'2026-08-25','1:17 pm','CEO','Pending July and August salaries by 20 Sep; September salary on 7 Oct.',[4,6],0],
+[5,'2026-08-25','2:21 pm','CEO','Calls 20 Sep and 7 Oct “final… no further changes or extensions”.',[4,6],1],
+[6,'2026-08-25','3:23 pm','CEO','All pending salaries by 20 Sep; warns staff over tone towards HR.',[4],0],
+[7,'2026-08-27','1:07 pm','HR Manager','ID cards, welcome kits, laptop bags, laptops, PF details and forms by mid-October; salaries by 20 Sep.',[4,12,14,16],0],
+[8,'2026-09-10','1:43 pm','CPO','Rumour warning; says salary will be paid “as per the dates committed”. No new date.',[],0],
+[9,'2026-09-10','2:03 pm','CHRO','Pending two months’ salary by the 20th, then the 7th monthly; laptops, insurance, ID cards, welcome kits by mid-October; advances stopped.',[4,6,14,16],0],
+[10,'2026-09-17','7:26 pm','CHRO (signed Management Team)','“FINAL COMMITMENT”: July–September payroll 5–10 Oct; 10 Oct “absolute final date”.',[7],1],
+[11,'2026-09-17','8:19 pm','CHRO','Blames audit and a PreyFox account restriction. No new date.',[],0],
+[12,'2026-09-17','8:43 pm','CEO','All pending salaries cleared 5–10 Oct; asks for “one final period” of patience.',[7],0],
+[13,'2026-09-18','12:26 am','CEO','Admits 20 Sep was not met; repeats the 5–10 Oct window.',[7],0],
+[14,'2026-09-18','6:27 pm','CEO','“Without fail” 5–10 Oct; “no further extension or postponement beyond 10 Oct”.',[7],1],
+[15,'2026-09-19','6:50 pm','CEO','Warns against rumours and social-media posts; disciplinary action possible. No pay date.',[],0],
 [16,'2026-10-10','6:03 pm','Office of the CEO &amp; Management','Admits 10 Oct was missed; says ~60% of staff got July pay. New dates: July 16 Oct, August 22 Oct, September 27 Oct.',[8,9,10],0],
-[17,'2026-10-18','—','Divya Asthana · CHRO','Apologises for being unreachable (travelling to Dubai); says the company is not shutting down. Remaining July salaries by 20 Oct; August and September “as per the previously communicated timelines”.',[17,9,10],0],
-[18,'2026-10-21','5:00 pm','Nohini Kiranmai','Discussed the salary timeline in a Teams call. She followed up in the group chat on 22 Oct (entry 20).',[],0,'Teams call'],
-[19,'2026-10-21','6:00 pm','Hardhika S · POC','Said in the Teams call that July and August salaries will be cleared by Fri 30 Oct 2026, and September and October salaries before Diwali. Agreed to act as the group’s POC.',[18,19,20],0,'Teams call'],
-[20,'2026-10-22','2:58 pm','Nohini Kiranmai','Group chat follow-up after the 21 Oct Teams call: two months’ salary “on or before 30th Oct” and September “before Diwali” (no fixed date). Replaces the 22 and 27 Oct dates.',[18,19],0,'Teams'],
+[17,'2026-10-18','—','CHRO','Apologises for being unreachable (travelling to Dubai); says the company is not shutting down. Remaining July salaries by 20 Oct; August and September “as per the previously communicated timelines”.',[17,9,10],0],
+[18,'2026-10-21','5:00 pm','Company representative','Discussed the salary timeline in a Teams call. She followed up in the group chat on 22 Oct (entry 20).',[],0,'Teams call'],
+[19,'2026-10-21','6:00 pm','HR group POC','Said in the Teams call that July and August salaries will be cleared by Fri 30 Oct 2026, and September and October salaries before Diwali. Agreed to act as the group’s POC.',[18,19,20],0,'Teams call'],
+[20,'2026-10-22','2:58 pm','Company representative','Group chat follow-up after the 21 Oct Teams call: two months’ salary “on or before 30th Oct” and September “before Diwali” (no fixed date). Replaces the 22 and 27 Oct dates.',[18,19],0,'Teams'],
 [21,'2026-10-22','7:08 pm','Stackly · Management (company-wide email)','Admits earlier payment commitments were not fulfilled; says salaries were released to some employees. Timeline: July and August by 30 Oct, September in the first week of November; “every possible effort” to clear all before Diwali. HR contacts sent in an Excel sheet. Asks staff not to act “out of frustration”.',[18,21],0],
 [22,'2026-10-31','9:31 am','Stackly · Management (company-wide email)','Blames US business difficulties and restrictions on its main IDFC account; says it moved to Razorpay and 300 employees have been paid. Remaining July and August salaries “within the next 24–72 hours”; all pending salaries “before Diwali”. Asks staff to avoid “unnecessary escalations”.',[22,19],0],
-[23,'2026-11-02','6:07 pm','Stackly · Management (company-wide email + signed statement)','Sends a signed management statement: all pending July and August salaries “on or before November 20, 2026”. September and October payment dates to be communicated “within this week”. Refers to “yesterday’s Teams calls” (1 Nov). Acknowledges earlier commitments were missed; asks staff to avoid “further unnecessary escalations”, saying complaints may trigger bank reviews.',[23,24],0]];
+[23,'2026-11-02','6:07 pm','Stackly · Management (company-wide email + signed statement)','Sends a signed management statement: all pending July and August salaries “on or before November 20, 2026”. September and October payment dates to be communicated “within this week”. Refers to “yesterday’s Teams calls” (1 Nov). Acknowledges earlier commitments were missed; asks staff to avoid “further unnecessary escalations”, saying complaints may trigger bank reviews.',[23,24],0],
+[24,'2026-11-17','—','Stackly Office Team (WhatsApp group)','Says Microsoft services are down (about 24 hours) and that email and Teams may be unavailable; Gmail to be the alternate channel. Employees report Teams and Outlook access blocked from 17 Nov (login shows “account locked”). The message has a “Salary Processing Date” section that has not been captured yet.',[],0,'WhatsApp'],
+[25,'2026-11-20','7:30 pm','Coimbatore employee (name withheld)','Petition receipt (CSR 1012/2026) at Race Course police station, Coimbatore City: an employee reports no salary for four months for himself and colleagues, and delays in PF and insurance registration. This is a petition receipt, not an FIR; nature shown as “Miscellaneous”.',[],0,'Police petition']];
 // [id,type,due,label,linked months,default mark]
 const PR=[
 [1,'Salary','2026-08-25','July salary, 20th–25th schedule','jul','auto'],
@@ -101,7 +103,7 @@ const PR=[
 [10,'Salary','2026-10-27','September salary','sep','revised'],
 [18,'Salary','2026-10-30','July &amp; August salary on or before 30 Oct (Teams 21–22 Oct and email 22 Oct)','jul,aug','auto'],
 [19,'Salary','2026-11-08','September salary “before Diwali” (no fixed date; Diwali is 8 Nov)','sep','auto'],
-[20,'Salary','2026-11-08','October salary “before Diwali” (no fixed date; Diwali is 8 Nov)','','auto'],
+[20,'Salary','2026-11-08','October salary “before Diwali” (no fixed date; Diwali is 8 Nov)','oct','auto'],
 [21,'Salary','2026-11-07','September salary in the first week of November (by 7 Nov)','sep','auto'],
 [22,'Salary','2026-11-03','July &amp; August salary “within 24–72 hours” of the 31 Oct email (by 3 Nov)','jul,aug','revised'],
 [23,'Salary','2026-11-20','July &amp; August salary on or before 20 Nov (signed statement, 2 Nov)','jul,aug','auto'],
@@ -118,10 +120,13 @@ const CATS=['Salary','PF','Laptop','Welcome kit'];
 const seed=()=>({co:'Stackly',rate:2.5,asof:iso(new Date()),pr:{},months:[
 {k:'jul',m:'July 2026',a:0,r:0,f:'2026-08-07',t:'2026-08-15',p:''},
 {k:'aug',m:'August 2026',a:0,r:0,f:'2026-09-07',t:'2026-09-15',p:''},
-{k:'sep',m:'September 2026',a:0,r:0,f:'2026-10-07',t:'2026-10-15',p:''}]});
+{k:'sep',m:'September 2026',a:0,r:0,f:'2026-10-07',t:'2026-10-15',p:''},
+{k:'oct',m:'October 2026',a:0,r:0,f:'2026-11-07',t:'2026-11-07',p:''}]});
 let S;try{S=JSON.parse(localStorage.getItem('sdt2'))}catch(e){}S=S||seed();S.pr=S.pr||{};S.asof=iso(new Date());
 if((S.v||0)<3){[9,10].forEach(i=>{if(S.pr[i]&&S.pr[i].k!=='kept')S.pr[i].k='revised'});S.v=3}
 if((S.v||0)<4){if(S.pr[22]&&S.pr[22].k!=='kept')S.pr[22].k='revised';S.v=4}
+if((S.v||0)<5){if(!S.months.some(x=>x.k==='oct'||/^oct/i.test(x.m))){const sp=S.months.find(x=>x.k==='sep');S.months.push({k:'oct',m:'October 2026',a:sp?+sp.a||0:0,r:0,f:'2026-11-07',t:'2026-11-07',p:''})}S.v=5}
+if((S.v||0)<6){const r=S.months.filter(x=>x.k==='oct'||/^oct/i.test(x.m));if(r.length){r.sort((a,b)=>((+b.a>0)-(+a.a>0))||((a.k==='')-(b.k==='')));const keep=r[0];keep.k='oct';S.months=S.months.filter(x=>!r.includes(x)||x===keep)}S.v=6}
 PR.forEach(p=>{S.pr[p[0]]=S.pr[p[0]]||{d:p[2],k:p[5]}});
 const save=()=>{try{localStorage.setItem('sdt2',JSON.stringify(S))}catch(e){}};
 function pst(p){const o=S.pr[p[0]];if(o.k!=='auto')return o.k;
@@ -161,7 +166,7 @@ else if(id==='co')S.co=e.target.value;else if(id==='asof')S.asof=e.target.value|
 const del=i=>{S.months.splice(i,1);render()};
 const addM=()=>{S.months.push({k:'',m:'',a:+$('qs').value||0,r:0,f:S.asof,t:S.asof,p:''});render()};
 const qa=()=>{const v=+$('qs').value;if(v>0){S.months.forEach(x=>{x.a=v});render()}};
-const fresh=()=>{if(confirm('Clear your salary entries and start blank?')){const d=iso(new Date());S.months=[{k:'jul',m:'July 2026',a:0,r:0,f:'2026-08-07',t:'2026-08-15',p:''},{k:'aug',m:'August 2026',a:0,r:0,f:'2026-09-07',t:'2026-09-15',p:''},{k:'sep',m:'September 2026',a:0,r:0,f:'2026-10-07',t:'2026-10-15',p:''}];PR.forEach(p=>{S.pr[p[0]]={d:p[2],k:p[5]}});render()}};
+const fresh=()=>{if(confirm('Clear your salary entries and start blank?')){const d=iso(new Date());S.months=[{k:'jul',m:'July 2026',a:0,r:0,f:'2026-08-07',t:'2026-08-15',p:''},{k:'aug',m:'August 2026',a:0,r:0,f:'2026-09-07',t:'2026-09-15',p:''},{k:'sep',m:'September 2026',a:0,r:0,f:'2026-10-07',t:'2026-10-15',p:''},{k:'oct',m:'October 2026',a:0,r:0,f:'2026-11-07',t:'2026-11-07',p:''}];PR.forEach(p=>{S.pr[p[0]]={d:p[2],k:p[5]}});render()}};
 const wa=()=>{const t=$('sm').value;if(navigator.share)navigator.share({text:t}).catch(()=>{});else window.open('https://wa.me/?text='+encodeURIComponent(t))};
 const cp=()=>{$('sm').select();try{navigator.clipboard.writeText($('sm').value)}catch(e){document.execCommand('copy')}};
 render();
